@@ -7,7 +7,7 @@ void main() {
     print(ps.isValid());
     final ps2 = Password(password: "PasswordDecode3");
     print(ps2.toString());
-    print(ps);
+    print(ps2);
     print(ps2.isValid());
 
     // print(ps._password); // Error: The getter '_password' isn't defined for the class 'Password'.
