@@ -8,7 +8,7 @@ Future<double> calculateTotal() async {
 
         double total = 0.0;
 
-        // if (userOrders == null) return total;
+        if (userOrders == null) return total;
 
         for (final product in userOrders) {
             final productPrice = json.decode(await fetchProductPrice(product));
