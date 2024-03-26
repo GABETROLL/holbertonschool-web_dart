@@ -11,7 +11,7 @@ class User {
         this.height = height;
     }
 
-    String toString() => 'User(id : $id ,name: $name,  age: $age, height: $height)';
+    String toString() => 'User(id : $id ,name: $name, age: $age, height: $height)';
 
     Map<String, dynamic> toJson() {
         return { 'id': this.id, 'name': this.name, 'age': this.age, 'height': this.height };
