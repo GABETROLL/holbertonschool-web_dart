@@ -21,7 +21,7 @@ class User {
         this._user_password.password = new_user_password;
     }
 
-    String toString() => 'User(id : $id ,name: $name, age: $age, height: $height, password: ${_user_password.isValid()})';
+    String toString() => 'User(id : $id ,name: $name, age: $age, height: $height, Password: ${_user_password.isValid()})';
 
     Map<String, dynamic> toJson() {
         return { 'id': this.id, 'name': this.name, 'age': this.age, 'height': this.height };
