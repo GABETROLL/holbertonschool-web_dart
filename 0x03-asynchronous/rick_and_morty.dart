@@ -3,22 +3,21 @@ import 'dart:convert';
 
 Future<void> printRmCharacters() async {
     try {
-        Map<String, dynamic> charactersResponse = json.decode((await http.get(
-            Uri.parse('https://rickandmortyapi.com/api/character'),
-        )).body);
-        String? nextPageUrl = charactersResponse['info']['next'];
+        String? nextPageUrl = 'https://rickandmortyapi.com/api/character';
 
-        while (true) {
-            for (final Map<String, dynamic> character in charactersResponse['results']) {
+        while (nextPageUrl != null) {
+            http.Response charactersResponse = await http.get(
+                Uri.parse(nextPageUrl),
+            );
+            if (charactersResponse.statusCode != 200) return;
+
+            Map<String, dynamic> charactersBody = json.decode(charactersResponse.body);
+
+            for (final Map<String, dynamic> character in charactersBody['results']) {
                 print(character['name']);
             }
 
-            if (nextPageUrl == null) break;
-
-            charactersResponse = json.decode((await http.get(
-                Uri.parse(nextPageUrl)
-            )).body);
-            nextPageUrl = charactersResponse['info']['next'];
+            nextPageUrl = charactersBody['info']['next'];
         }
     } catch (error) {
         print('error caught: $error');
